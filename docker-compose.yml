@@ -6,48 +6,47 @@ services:
     ports:
       - "3000:3000"
     env_file: ./api-gateway/.env
-    depends_on: 
+    depends_on:
       - redis
       - rabbitmq
     environment:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=ampq://rabbitmq:5672
 
-  identity-service: 
+  identity-service:
     build: ./identity-service
     env_file: ./identity-service/.env
-    depends_on: 
+    depends_on:
       - redis
       - rabbitmq
     environment:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=ampq://rabbitmq:5672
 
-  post-service: 
+  post-service:
     build: ./post-service
     env_file: ./post-service/.env
-    depends_on: 
+    depends_on:
       - redis
       - rabbitmq
     environment:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=ampq://rabbitmq:5672
-  
 
-  media-service: 
+  media-service:
     build: ./media-service
     env_file: ./media-service/.env
-    depends_on: 
+    depends_on:
       - redis
       - rabbitmq
     environment:
       - REDIS_URL=redis://redis:6379
       - RABBITMQ_URL=ampq://rabbitmq:5672
-  
-  search-service: 
+
+  search-service:
     build: ./search-service
     env_file: ./search-service/.env
-    depends_on: 
+    depends_on:
       - redis
       - rabbitmq
     environment:
@@ -58,7 +57,6 @@ services:
     image: redis:alpine
     ports:
       - "6379:6379"
-  
 
   rabbitmq:
     image: rabbitmq:3-management
