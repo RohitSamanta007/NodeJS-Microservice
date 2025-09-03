@@ -1,0 +1,3 @@
+1> as we do not have any url in post service' postSchema but we have mediaId, based on the mediaId fetch the url from mediaService
+
+2> Implemet redis caching in serch service : -> pass redis client as part of the req like post service -> implemetn redis chaching in controller -> every time an event handler execute invalidate the cache
